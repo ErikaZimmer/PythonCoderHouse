@@ -1,0 +1,21 @@
+{% extends "parent.html" %}
+
+{% load static %}
+
+{% block title %}
+Search a Post!
+{% endblock %}
+
+{% block logo %}
+{% endblock %}
+
+{% block content %}
+<h1>Search Post</h1>
+    <form action="{% url 'SearchPost' %}" method="GET">
+        <h3>Search some keyword in the title</h3>
+        <table>
+            <input type="text" name="title" placeholder="Title keyword" id="title">
+        </table>
+        <input type="submit" value="search">
+    </form>
+{% endblock %}

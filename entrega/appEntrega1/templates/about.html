@@ -1,0 +1,27 @@
+{% extends "parent.html" %}
+
+{% load static %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block logo %}
+{% endblock %}
+
+{% block content %}
+    {% if teammembers %}
+    <h1>Team members:</h1>
+        <ul>
+            {% for teammember in teammembers%}
+                    <li> {{teammember.name}} </li>
+                    <li> {{teammember.lastname}} </li>
+                    <li> {{teammember.email}} </li>
+                    <li> {{teammember.githubaccount}} </li>
+                    <br>
+            {% endfor %}
+        </ul>   
+    {% else %}
+        <h1>No team members were added yet</h1>
+    {% endif %}
+{% endblock %}

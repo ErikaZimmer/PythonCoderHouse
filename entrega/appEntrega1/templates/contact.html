@@ -1,0 +1,20 @@
+{% extends "parent.html" %}
+
+{% load static %}
+
+{% block title %}
+Contact Us!
+{% endblock %}
+
+{% block logo %}
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'Contact' %}" method="POST">{% csrf_token %}
+    <h3>Send us a message!</h3>
+    <table>
+        {{ myForm.as_table }}
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+{% endblock %}
