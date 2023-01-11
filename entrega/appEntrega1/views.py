@@ -131,7 +131,7 @@ def profile(request):
 def updatepost(request, post_id):
     blogpost = BlogPost.objects.get(id=post_id)
     if request.method == 'POST':
-        myForm = BlogPostForm(request.POST, {'title':"test"})
+        myForm = BlogPostForm(request.POST)
         if myForm.is_valid():
             info = myForm.cleaned_data
             blogpost.title=info['title']
@@ -147,4 +147,18 @@ def updatepost(request, post_id):
 
 def updateprofile(request):
     usuario = request.user
-    return render (request, 'updateprofile.html')
+    if request.method == 'POST':
+        myForm = UserUpdateForm(request.POST)
+        if myForm.is_valid():
+            info = myForm.cleaned_data
+            usuario.email = info['email']
+            usuario.first_name = info['first_name']
+            usuario.last_name = info['last_name']
+            usuario.save()
+            return render(request,"index.html", {'message': "The user has been updated."})
+    else:
+
+        inicial_data={'email':usuario.email, 'first_name':usuario.first_name, 'last_name':usuario.last_name}
+  
+        myForm = UserUpdateForm(initial=inicial_data)
+        return render (request, 'updateprofile.html', {'myForm':myForm})
