@@ -127,20 +127,24 @@ def login_request(request):
 def profile(request):
     return render(request, 'profile.html')
 
+
+def updatepost(request, post_id):
+    blogpost = BlogPost.objects.get(id=post_id)
+    if request.method == 'POST':
+        myForm = BlogPostForm(request.POST, {'title':"test"})
+        if myForm.is_valid():
+            info = myForm.cleaned_data
+            blogpost.title=info['title']
+            blogpost.subtitle=info['subtitle']
+            blogpost.content=info['content']
+            blogpost.category=info['category']
+            blogpost.save()
+            return render(request,"index.html", {'message': "The post has been updated."})
+    else:  
+        initial_data={'title':blogpost.title, 'subtitle':blogpost.subtitle, 'content':blogpost.content, 'category':blogpost.category}
+        myForm=BlogPostForm(initial=initial_data)
+        return render (request, 'updatepost.html', {'myForm':myForm})
+
 def updateprofile(request):
     usuario = request.user
-    if request.method == 'POST':
-        form = UserUpdateForm(request.POST)
-        if form.is_valid:
-
-            usuario.email= form.cleaned_data.get('email')
-            usuario.password1= form.cleaned_data.get('password1')
-            usuario.password2= form.cleaned_data.get('password2')
-            usuario.fistname= form.cleaned_data.get('fistname')
-            usuario.lastname= form.cleaned_data.get('lastname')
-            usuario.save()
-        
-            return render(request, 'index.html', {'message':"The profile has been updated."})
-    else: 
-        form = UserUpdateForm()
-    return render (request, 'updateprofile.html', {'form':form, 'usuario':usuario})
+    return render (request, 'updateprofile.html')
