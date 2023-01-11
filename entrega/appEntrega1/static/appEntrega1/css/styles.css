@@ -191,6 +191,10 @@ ul ol {
   margin-bottom: 0;
 }
 
+li{
+  list-style: none;
+}
+
 dt {
   font-weight: 700;
 }
@@ -304,6 +308,9 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+  margin: auto!important;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 caption {
