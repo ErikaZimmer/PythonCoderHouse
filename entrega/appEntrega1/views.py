@@ -83,10 +83,8 @@ def deletepost(request, post_id):
 
     blogpost = BlogPost.objects.all()
     blogposts = {'blogpost':blogpost}
-    if blogposts:
-        return render(request, 'index.html', blogposts, {'message':"The post has been deleted."})
-    else:
-        return render(request, 'index.html', {'message':"Sorry! We dont have any post."})
+
+    return render(request, 'index.html', {'message':"The post has been deleted."})
 
 
 def register (request):
