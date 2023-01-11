@@ -39,4 +39,5 @@ class Migration(migrations.Migration):
                 ('githubaccount', models.CharField(max_length=30)),
             ],
         ),
+
     ]

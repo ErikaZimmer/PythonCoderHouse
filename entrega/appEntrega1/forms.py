@@ -1,4 +1,8 @@
+from dataclasses import field
+from pyexpat import model
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 class BlogPostForm(forms.Form):
     title = forms.CharField(max_length=300)
@@ -16,3 +20,11 @@ class TeamMemberForm(forms.Form):
     lastname = forms.CharField(max_length=30)
     email = forms.EmailField()
     githubaccount = forms.CharField(max_length=30)
+
+class UserRegisterForm(UserCreationForm):
+    email=forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+        help_texts = {k:"" for k in fields}

@@ -19,3 +19,4 @@ class ContactMessage(models.Model):
     name = models.CharField(max_length=30)
     lastname = models.CharField(max_length=30)
     message = models.CharField(max_length=700)
+

@@ -10,4 +10,7 @@ urlpatterns = [
     path('addblogpost', views.addblogpost, name="AddBlogPost"),
     path('searchpost', views.searchpost, name="SearchPost"),
     path('searchpostsite', views.searchpostsite, name="SearchPostSite"),
+    path('deletepost/<post_id>/', views.deletepost, name="DeletePost"),
+    path('register', views.register, name="Register"),
+    path('login', views.login_request, name="Login"),
 ]

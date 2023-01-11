@@ -20,10 +20,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Index' %}"><img src="https://img.icons8.com/bubbles/50/null/home-page.png"/></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'About' %}"><img src="https://img.icons8.com/bubbles/50/null/info.png"/></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Contact' %}"><img src="https://img.icons8.com/bubbles/50/null/new-post.png"/></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'AddBlogPost' %}"><img src="https://img.icons8.com/bubbles/50/null/add.png"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'About' %}"><img src="https://img.icons8.com/bubbles/50/null/group.png"/></a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href=""><img src="https://img.icons8.com/bubbles/50/null/user-folder.png"/></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'AddBlogPost' %}"><img src="https://img.icons8.com/bubbles/50/null/add-file.png"/></a></li>
+                            <li class="nav-item"><a class="nav-link" href="admin/"><img src="https://img.icons8.com/bubbles/50/null/administrative-tools.png"/></a></li>
+                            <li class="nav-item"><a class="nav-link" href=""><img src="https://img.icons8.com/bubbles/50/null/logout-rounded.png"/></a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'Register' %}"><img src="https://img.icons8.com/bubbles/50/null/test-account.png"/></a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'Login' %}"><img src="https://img.icons8.com/bubbles/50/null/login-rounded-right.png"/></a></li>
+                        {% endif %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'SearchPostSite' %}"><img src="https://img.icons8.com/bubbles/50/null/google-web-search.png"/></a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Contact' %}"><img src="https://img.icons8.com/bubbles/50/null/new-post.png"/></a></li>
                     </ul>
                 </div>
             </div>
