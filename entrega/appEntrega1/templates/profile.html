@@ -15,11 +15,21 @@ Profile!
             <div class="text-center my-5">
                 <h1>Hi there!</h1>
                 <p class="lead mb-0">Esta es la informacion de tu perfil:</p>
-                <p><strong>Nombre:</strong> {{user.username}}</p>
-                <p><strong>Email:</strong> {{user.email}}</p>
+                {% if user.username %}
+                    <p><strong>Nombre de usuario:</strong> {{user.username}}</p>
+                {% endif %}
+                {% if user.firstname %}
+                    <p><strong>Nombre:</strong> {{user.firstname}}</p>
+                {% endif %}
+                {% if user.lastname %}
+                    <p><strong>Apellido:</strong> {{user.lasstname}}</p>
+                {% endif %}
+                {% if user.email %}
+                    <p><strong>Email:</strong> {{user.email}}</p>
+                {% endif %}
                 <p><strong>Cuenta de staff:</strong> {{user.is_staff}}</p>
                 <hr>
-                
+                <a href="{% url 'UpdateProfile' %}"><img src="https://img.icons8.com/bubbles/80/null/edit-file.png"/></a>
             </div>
         </div>
     </header>

@@ -126,3 +126,21 @@ def login_request(request):
 
 def profile(request):
     return render(request, 'profile.html')
+
+def updateprofile(request):
+    usuario = request.user
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST)
+        if form.is_valid:
+
+            usuario.email= form.cleaned_data.get('email')
+            usuario.password1= form.cleaned_data.get('password1')
+            usuario.password2= form.cleaned_data.get('password2')
+            usuario.fistname= form.cleaned_data.get('fistname')
+            usuario.lastname= form.cleaned_data.get('lastname')
+            usuario.save()
+        
+            return render(request, 'index.html', {'message':"The profile has been updated."})
+    else: 
+        form = UserUpdateForm()
+    return render (request, 'updateprofile.html', {'form':form, 'usuario':usuario})
